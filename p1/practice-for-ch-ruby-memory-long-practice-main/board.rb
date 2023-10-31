@@ -1,10 +1,14 @@
+require "byebug"
+
+#we probably want to populate when we call the board
+
 class Board 
 
   attr_reader :grid
 
-  @@elements = ("a".."h").to_a
+  # @@elements = ("a".."h").to_a
 
-  def intialize
+  def initialize
     @grid = Array.new(4) { Array.new(4, nil) }
     @size = @grid.length / 2
     #@grid should take in cards as an arg

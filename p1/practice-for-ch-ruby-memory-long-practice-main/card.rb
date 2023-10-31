@@ -1,6 +1,6 @@
 class Card 
   attr_reader :face_down, :face_value
-  def intialize(face_value) 
+  def initialize(face_value) 
     @face_value = face_value
     @face_down = true 
     @default_value = " "
