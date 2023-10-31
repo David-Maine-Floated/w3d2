@@ -19,16 +19,16 @@ class Card
     end   
 
     def hide 
-        if !self.face_down
-            self.face_down = true 
-            @shown_value = @default_value
-        end    
+      self.face_down = true 
+      @shown_value = @default_value
     end
 
-    def reveal 
+    def reveal
+      self.face_down = false
+      @shown_value = @face_value
         # if self.face_down
         #     puts self.face_value
-            @shown_value = @face_value
+            # @shown_value = @face_value
         #     self.face_down = false 
         # end    
     end    
