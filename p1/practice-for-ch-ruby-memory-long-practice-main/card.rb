@@ -26,11 +26,11 @@ class Card
     end
 
     def reveal 
-        if self.face_down
-            puts self.face_value
+        # if self.face_down
+        #     puts self.face_value
             @shown_value = @face_value
-            self.face_down = false 
-        end    
+        #     self.face_down = false 
+        # end    
     end    
 
     def to_s 
@@ -41,8 +41,8 @@ class Card
       end  
     end
     
-    def ==
+    # def ==
 
-    end    
+    # end    
 
 end   

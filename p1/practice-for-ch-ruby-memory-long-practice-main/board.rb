@@ -12,7 +12,7 @@ class Board
   def initialize
     @grid = Array.new(4) { Array.new(4, nil) }
     @size = @grid.length * @grid.length
-    # self.populate
+    self.populate
     #@grid should take in cards as an arg
   end
   #populate board with @board,size / 2 , end up with 2 of each card 
@@ -20,7 +20,6 @@ class Board
   def populate
     # debugger  
     new_arr = @@elements + @@elements
-    p new_arr 
     while new_arr.length > 0
       # debugger 
       i_one = rand(0...@grid.length)
@@ -29,7 +28,6 @@ class Board
       if @grid[i_one][i_two] == nil
         # debugger 
         curr_el = new_arr.pop
-        p curr_el
         @grid[i_one][i_two] = Card.new(curr_el)
       end
     end
@@ -38,9 +36,25 @@ class Board
   def render
     @grid.each do |row|
       row_to_puts = ""
-      row.each { |card| row_to_puts += card.shown_value + " " }  
+      row.each { |card| row_to_puts += "|" + card.shown_value + " " }  
       puts row_to_puts
     end  
   end
+
+  def won?  
+    @grid.any? do |row|
+      return false  if row.any? {|card| card.face_down} 
+    end  
+    return true  
+  end  
+
+  def reveal(guessed_pos)
+    row, col = guessed_pos
+    card = @grid[row][col]
+    if card.face_down
+      card.reveal 
+      return card.face_value
+    end  
+  end  
 
 end 
