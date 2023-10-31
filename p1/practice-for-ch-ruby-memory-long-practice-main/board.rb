@@ -12,7 +12,7 @@ class Board
   def initialize
     @grid = Array.new(4) { Array.new(4, nil) }
     @size = @grid.length * @grid.length
-    self.populate
+    # self.populate
     #@grid should take in cards as an arg
   end
   #populate board with @board,size / 2 , end up with 2 of each card 
@@ -29,18 +29,18 @@ class Board
       if @grid[i_one][i_two] == nil
         # debugger 
         curr_el = new_arr.pop
+        p curr_el
         @grid[i_one][i_two] = Card.new(curr_el)
       end
-
     end
   end
 
-  def print
-    puts @grid.each do |row|
+  def render
+    @grid.each do |row|
       row_to_puts = ""
-      row.each {|space| row_to_puts += space.shown_value}  
+      row.each { |card| row_to_puts += card.shown_value + " " }  
+      puts row_to_puts
     end  
   end
-
 
 end 
